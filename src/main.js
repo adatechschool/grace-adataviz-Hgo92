@@ -673,6 +673,8 @@ if (compteurBloc > limit_start) {
     }
   });
 }
+
+blocLoader.style.display = "none";
 }) 
 
 buttonReset.addEventListener("click", () => {
