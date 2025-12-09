@@ -1,0 +1,386 @@
+@font-face {
+  font-family: DidotFont; 
+  src: url(fonts/Didot.otf);
+}
+
+@font-face {
+  font-family: DidotItalic; 
+  src: url(fonts/Didot\ Italic.otf);
+}
+
+@font-face {
+  font-family: DidotBold; 
+  src: url(fonts/Didot\ Bold.otf);
+}
+
+@font-face {
+  font-family: DidotTitle; 
+  src: url(fonts/Didot\ Title.otf);
+}
+
+* {
+  font-size : 16px;
+  font-family: "DidotFont";
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #F6F2FF;
+}
+
+h1 {
+  font-family : "DidotBold";
+  font-size : 3rem;
+  text-align : center;
+  margin : 20px;
+}
+
+#subtitle-block {
+  text-align : center;
+  font-size : 1.5rem;
+  padding : 10px 25px;
+  margin : 0 auto;
+}
+
+#search-box {
+  display : flex;
+  flex-wrap : wrap;
+  width: 95%;
+  justify-content: space-between;
+  align-items: center;
+  border : 2px solid #736F72;
+  background-color: #DCCCFF;
+  border-radius: 15px;
+  padding : 5px 5px 5px 5px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin : 10px auto 25px auto;
+}
+
+h2 {
+  margin-left : 5px;
+}
+
+#search-input {
+  width: 150px;
+  height: 20px;
+  padding : 5px;
+}
+
+.label-class {
+  margin-right: 5px;
+}
+
+.select-class {
+  padding: 0 0 0 5px;
+}
+
+#search-button-block {
+  margin-right: 15px;
+  gap: 5px;
+  display:flex;
+}
+
+#search-button-block button {
+  padding : 0 15px;
+}
+
+#answer-block {
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  gap : 20px;
+  justify-content: space-evenly;
+}
+
+.bloc-plaque {
+  position: relative;
+  padding: 35px 30px;
+  border-radius: 8px;
+  width: 600px;
+  text-align: center;
+}
+
+.bloc-prio {
+  display : flex;
+  flex-direction: column;
+  gap : 10px;
+  justify-content: space-around;
+}
+
+.bouton-plus{
+  padding : 5px;
+  width : 100px;
+  align-self: center;
+  margin : 10px 0 0 0;
+}
+
+.bouton-moins{
+  padding : 5px;
+  width : 100px;
+  align-self: center;
+  margin : 10px 0 0 0;
+}
+
+.bouton-plus-plaque {
+  min-width : 400px;
+  min-height : 20px;
+  margin : 10px;
+}
+
+.bloc-pas-prio {
+  display : flex;
+  justify-content: space-evenly;
+  gap : 10px;
+  margin : 10px 20px;
+  font-size: 0.75rem;
+}
+
+/* Matériaux différents */
+.bloc-plaque.pierre {
+  background: linear-gradient(145deg, #d4cfc4, #b5afa4);
+  box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.bloc-plaque.pierre-blanche {
+  background: linear-gradient(145deg, #f5f0e8, #e8e0d5);
+  box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.bloc-plaque.marbre-blanc {
+  background: linear-gradient(145deg, #f8f6f1, #e9e5dc);
+  box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.bloc-plaque.marbre-noir {
+  background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
+  box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.bloc-plaque.marbre-noir .bloc-content,
+.bloc-plaque.marbre-noir .bloc-header {
+  color: #e8e0d5;
+}
+
+.bloc-plaque.marbre-noir .metadata span {
+  opacity: 0.7;
+}
+
+.bloc-plaque.marbre {
+  background: linear-gradient(145deg, #e8d5c4, #c9b8a8);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.bloc-plaque.granit {
+  background: linear-gradient(145deg, #6b6b6b, #4a4a4a);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.bloc-plaque.granit .bloc-content,
+.bloc-plaque.granit .bloc-header {
+  color: #f0f0f0;
+}
+
+.bloc-plaque.granit .metadata span {
+  opacity: 0.8;
+}
+
+.bloc-plaque.comblanchien {
+  background: linear-gradient(145deg, #ddd5c7, #c5bdb0);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.bloc-plaque.plexiglas {
+  background: linear-gradient(145deg, rgba(240, 240, 240, 0.95), rgba(220, 220, 220, 0.95));
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(5px);
+}
+
+.bloc-plaque.autre {
+  background: linear-gradient(145deg, #c8b8a8, #a89888);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.bloc-plaque::before,
+.bloc-plaque::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle, #8b7355 30%, #695841 70%);
+  border-radius: 50%;
+  box-shadow: 
+    inset 0 2px 3px rgba(0, 0, 0, 0.4),
+    0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.bloc-plaque::before {
+  top: 20px;
+  left: 20px;
+}
+
+.bloc-plaque::after {
+  top: 20px;
+  right: 20px;
+}
+
+.screw-bottom-left,
+.screw-bottom-right {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle, #8b7355 30%, #695841 70%);
+  border-radius: 50%;
+  box-shadow: 
+    inset 0 2px 3px rgba(0, 0, 0, 0.4),
+    0 1px 2px rgba(255, 255, 255, 0.3);
+  bottom: 20px;
+}
+
+.screw-bottom-left {
+  left: 20px;
+}
+
+.screw-bottom-right {
+  right: 20px;
+}
+
+.bloc-content {
+  color: #3a3028;
+  letter-spacing: 0.05em;
+}
+
+.bloc-header {
+  font-size: 0.9em;
+  color: #5a4a3a;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.address {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.metadata {
+  font-size: 0.85em;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.metadata span {
+  opacity: 0.8;
+}
+
+.name {
+  font-size: 2.2em;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.type {
+  font-size: 1.4em;
+  margin: 0 0 25px 0;
+  font-weight: 300;
+  }
+
+.description {
+font-size: 1.1em;
+line-height: 1.6;
+margin: 0;
+font-weight: 400;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+}
+
+.title-work {
+font-style: italic;
+font-weight: 500;
+margin: 15px 0 0 0;
+}
+
+@media (max-width: 800px) {
+
+* {
+  font-size : 12px;
+}
+
+h1 {
+  margin : 20px 10px 10px 10px;
+}
+
+#search-box {
+  justify-content: left;
+  align-items: normal;
+  flex-direction: column;
+}
+
+.bloc-plaque {
+  width: 70vw;
+  max-width : 600px;
+  /* height: 35vw; */
+}
+
+.bloc-header {
+  margin : auto;
+}
+
+.address {
+  font-size : 2vw;
+}
+
+.metadata {
+  gap : 10px;
+}
+
+.metadata span {
+  font-size : 2vw;
+}
+
+.name {
+  font-size : 4.5vw;
+  margin : auto;
+}
+
+.type {
+  font-size : 3.5vw;
+  margin : auto;
+}
+
+.description {
+  font-size: 2.5vw;
+}
+
+}

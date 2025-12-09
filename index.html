@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/src/style.css" rel = "stylesheet"  type="text/css"/>
+    <title>adataviz-hgo92</title>
+  </head>
+  <body>
+    <h1>La mémoire de Paris</h1>
+    <p id = "subtitle-block">A Paris, 2 575 plaques commémoratives célèbrent la mémoire de disparus, de lieux ou d'événements historiques. Artistes, politiques, résistants, déportés, ... Partez à la découverte de ces histoires parisiennes.</p>
+
+    <div id = "search-box">
+
+      <h2>Votre recherche</h2>
+
+      <input id = 'search-input' placeholder ="Nom">
+
+      <div id="select-type-block">
+        <label class ="label-class" for = "type">Type de personne</label>
+        <select class = "select-class" id="select-type" name="type">
+          <option value = "all">Tous</option>
+          <option value = "les Résistants">Résistant</option>
+          <option value = "les artistes">Artiste</option>
+          <option value = "les politiques">Politique</option>
+          <option value = "les militaires">Militaire</option>
+          <option value = "les victimes civiles de guerre">Victime civile</option>
+          <option value = "les médecins et scientifiques">Médecin / Scientifique</option>
+          <option value = "les écrivains et intellectuels">Ecrivain / Intellectuel</option>
+          <option value = "les victimes du terrorisme">Victimes du terrorisme</option>
+          <option value = "les éducateurs et pédagogues">Educateur / Pédagogue</option>
+          <option value = "les religieux">Religieux</option>
+          <option value = "les journalistes">Journaliste</option>
+          <option value = "lieux, édifices et vestiges">Lieux / Vestiges</option>
+          <option value = "évènements et faits historiques">Evénement</option>
+          <option value = "les inventeurs et ingénieurs">Inventeurs / Ingénieurs</option>
+          <option value = "les éditeurs et libraires">Editeurs / Libraires</option>
+          <option value = "les avocats, magistrats et juristes">Avocat / Magistrat / Juriste</option>
+          <option value = "les Morts pour la France">Mort pour la France</option>
+          <option value = "les chercheurs et conservateurs du patrimoine">Chercheur / Conservateur</option>
+          <option value = "les aviateurs">Aviateur</option>
+          <option value = "les Justes parmi les Nations">Juste parmi les Nations</option>
+          <option value = "les victimes d'accidents et catastrophes">Victimes d'accidents et catastrophe</option>
+          <option value = "les collectionneurs, mécènes et philantropes">Collectionneur / Mécène / Philantrope</option>
+          <option value = "les industriels et entrepreneurs">Industriel / Entrepreneur</option>
+          <option value = "les sportifs">Sportif</option>
+          <option value = "les créateurs et couturiers">Créateur / Couturier</option>
+        </select>
+      </div>
+
+      <div id="select-genre-block">
+        <label class ="label-class" for = "genre">Genre</label>
+          <select class = "select-class" id="select-genre" name="genre">
+            <option value = "all">Tous</option>
+            <option value = "YY">Homme</option>
+            <option value = "XX">Femme</option>
+            <option value = "autre">Autre</option>
+        </select>
+      </div>
+      
+      <div id="select-period-block">
+        <label class ="label-class" for = "period">Siècle</label>
+          <select class = "select-class" id="select-period" name="period">
+            <option value = "all">Tous</option>
+            <option value = "21">XXIe siècle</option>
+            <option value = "20">XXe siècle</option>
+            <option value = "19">XIXe siècle</option>
+            <option value = "18">XVIIIe siècle</option>
+            <option value = "17">XVIIe siècle</option>
+            <option value = "16">XVIe siècle</option>
+            <option value = "15">XVe siècle</option>
+            <option value = "14">XIVe siècle</option>
+            <option value = "13">XIIIe siècle</option>
+            <option value = "autre">Avant</option>
+          </select>
+      </div>
+
+      <div id="select-district-block">
+        <label class ="label-class" for = "district">Arrondissement</label>
+          <select class = "select-class" id="select-district" name="district">
+            <option value = "all">Tous</option>
+            <option value = "1">Ier</option>
+            <option value = "2">IIe </option>
+            <option value = "3">IIIe</option>
+            <option value = "4">IVe</option>
+            <option value = "5">Ve</option>
+            <option value = "6">VIe</option>
+            <option value = "7">VIIe</option>
+            <option value = "8">VIIIe</option>
+            <option value = "9">IXe </option>
+            <option value = "10">Xe</option>
+            <option value = "11">XIe</option>
+            <option value = "12">XIIe</option>
+            <option value = "13">XIIIe</option>
+            <option value = "14">XIVe</option>
+            <option value = "15">XVe</option>
+            <option value = "16">XVIe</option>
+            <option value = "17">XVIIe</option>
+            <option value = "18">XVIIIe</option>
+            <option value = "19">XIXe</option>
+            <option value = "20">XXe</option>
+
+          </select>
+      </div>      
+
+      <div id="search-button-block">
+        <button id ="search-button">Rechercher</button>
+        <button id ="search-button-reset">Effacer mes critères</button>
+      </div>
+    </div>
+
+    <div id="answer-block"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
