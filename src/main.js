@@ -179,12 +179,23 @@ for (let i = 0 ; i < data.length ; i++) {
     } else {
       blocTitre.innerText = "Ici";
     }
+
+    let blocGenre;
+    if (genre === "XX") {
+    blocGenre = "Femme";
+    } else if (genre === "YY") {
+    blocGenre = "Homme";
+    } else {
+    blocGenre = "Groupe / Autre";
+    }
     
     let blocType = document.createElement("div");
+
+    if (blocGenre === "Homme" && blocGenre === "Groupe / Autre") {
     blocType.classList.add("type");
       switch (type1) {
         case "les Résistants" :
-        type1 = "Résistant(e)";
+        type1 = "Résistant";
         break;
         case "lieux, édifices et vestiges" :
         type1 = "Lieux et vestiges";
@@ -208,10 +219,10 @@ for (let i = 0 ; i < data.length ; i++) {
         type1 = "Editeur / Libraire";
         break;
         case "les avocats, magistrats et juristes" :
-        type1 = "Avocat(e) / Magistrat(e) / Juriste";
+        type1 = "Avocat / Magistrat / Juriste";
         break;
         case "les Morts pour la France" :
-        type1 = "Mort(es) pour la France";
+        type1 = "Mort pour la France";
         break;
         case "les politiques" :
         type1 = "Politique";
@@ -220,37 +231,37 @@ for (let i = 0 ; i < data.length ; i++) {
         type1 = "Militaire";
         break;
         case "les victimes civiles de guerre" :
-        type1 = "Victime(s) civiles de guerre";
+        type1 = "Victimes civiles de guerre";
         break;
         case "les médecins et scientifiques" :
         type1 = "Médecin / Scientifique";
         break;
         case "les écrivains et intellectuels" :
-        type1 = "Ecrivain / Intellectuel(le)";
+        type1 = "Ecrivain / Intellectuel";
         break;
         case "les religieux" :
-        type1 = "Religieux / Religieuse";
+        type1 = "Religieux";
         break;
         case "les journalistes" :
         type1 = "Journaliste";
         break;
         case "les artisans et commerçants" :
-        type1 = 'Artisan / Commerçant(e)';
+        type1 = 'Artisan / Commerçant';
         break;
         case "les victimes du terrorisme" :
-        type1 = 'Victime(s) du terrorisme';
+        type1 = 'Victimes du terrorisme';
         break;
         case "les éducateurs et pédagogues" :
         type1 = 'Educateur / Pédagogue';
         break;
         case "les chercheurs et conservateurs du patrimoine" :
-        type1 = 'Chercheur / Chercheuse / Conservateur du patrimoine';
+        type1 = 'Chercheur / Conservateur du patrimoine';
         break;
         case "les aviateurs" :
-        type1 = 'Aviateur / Aviatrice';
+        type1 = 'Aviateur';
         break;
         case "les victimes d'accidents et catastrophes" :
-        type1 = "Victime(s) d'accidents et de catastrophes";
+        type1 = "Victimes d'accidents et de catastrophes";
         break;
         case "les collectionneurs, mécènes et philantropes" :
         type1 = 'Collectionneur / Mécène / Philantrope';
@@ -259,7 +270,7 @@ for (let i = 0 ; i < data.length ; i++) {
         type1 = 'Industriel / Entrepreneur';
         break;
         case "les sportifs" :
-        type1 = 'Sportif / Sportive';
+        type1 = 'Sportif';
         break;
         case "les créateurs et couturiers" :
         type1 = 'Créateur / Couturier';
@@ -290,16 +301,16 @@ for (let i = 0 ; i < data.length ; i++) {
       type2 = "Artiste (théâtre et cinéma)";
       break;
       case "les inventeurs et ingénieurs" :
-      type2 = "Inventeur / Ingénieur(e)";
+      type2 = "Inventeur / Ingénieur";
       break;
       case "les éditeurs et les libraires" :
       type2 = "Editeur / Libraire";
       break;
       case "les avocats, magistrats et juristes" :
-      type2 = "Avocat(e) / Magistrat(e) / Juriste";
+      type2 = "Avocat / Magistrat / Juriste";
       break;
       case "les Morts pour la France" :
-      type2 = "Mort(s) pour la France";
+      type2 = "Mort pour la France";
       break;
       case "les politiques" :
       type2 = "Politique";
@@ -308,13 +319,13 @@ for (let i = 0 ; i < data.length ; i++) {
       type2 = "Militaire";
       break;
       case "les victimes civiles de guerre" :
-      type2 = "Victime(s) civiles de guerre";
+      type2 = "Victimes civiles de guerre";
       break;
       case "les médecins et scientifiques" :
       type2 = "Médecin / Scientifique";
       break;
       case "les écrivains et intellectuels" :
-      type2 = "Ecrivain / Intellectuel(le)";
+      type2 = "Ecrivain / Intellectuel";
       break;
       case "les religieux" :
       type2 = "Religieux";
@@ -323,22 +334,22 @@ for (let i = 0 ; i < data.length ; i++) {
       type2 = "Journaliste";
       break;
       case "les artisans et commerçants" :
-      type2 = 'Artisan / Commerçant(e)';
+      type2 = 'Artisan / Commerçant';
       break; 
       case "les victimes du terrorisme" :
-      type2 = 'Victime(s) du terrorisme';
+      type2 = 'Victimes du terrorisme';
       break;
       case "les éducateurs et pédagogues" :
       type2 = 'Educateur / Pédagogue';
       break;
       case "les chercheurs et conservateurs du patrimoine" :
-      type2 = 'Chercheur / Chercheuse / Conservateur du patrimoine';
+      type2 = 'Chercheur / Conservateur du patrimoine';
       break;
       case "les aviateurs" :
-      type2 = 'Aviateur / Aviatrice';
+      type2 = 'Aviateur';
       break;
       case "les victimes d'accidents et catastrophes" :
-      type2 = "Victime(s) d'accidents et de catastrophes";
+      type2 = "Victimes d'accidents et de catastrophes";
       break;
       case "les collectionneurs, mécènes et philantropes" :
       type2 = 'Collectionneur / Mécène / Philantrope';
@@ -347,7 +358,7 @@ for (let i = 0 ; i < data.length ; i++) {
       type2 = 'Industriel / Entrepreneur';
       break;
       case "les sportifs" :
-      type2 = 'Sportif / Sportive';
+      type2 = 'Sportif';
       break;
       case "les créateurs et couturiers" :
       type2 = 'Créateur / Couturier';
@@ -355,16 +366,184 @@ for (let i = 0 ; i < data.length ; i++) {
       default :
       type2 = "Autre"}
       blocType.innerText = type1 + " / " + type2
-    }
+    } 
+  } else if (blocGenre === "Femme") {
+    blocType.classList.add("type");
+      switch (type1) {
+        case "les Résistants" :
+        type1 = "Résistante";
+        break;
+        case "lieux, édifices et vestiges" :
+        type1 = "Lieux et vestiges";
+        break;
+        case "évènements et faits historiques" :
+        type1 = "Evénement";
+        break;
+        case "les artistes (beaux-arts)" :
+        type1 = "Artiste (Beaux-Arts)";
+        break;
+        case "les artistes (musique et danse)" :
+        type1 = "Artiste (musique et danse)";
+        break;
+        case "les artistes (théâtre et cinéma)" :
+        type1 = "Artiste (théâtre et cinéma)";
+        break;
+        case "les inventeurs et ingénieurs" :
+        type1 = "Inventeuse / Ingénieure";
+        break;
+        case "les éditeurs et libraires" :
+        type1 = "Editrice / Libraire";
+        break;
+        case "les avocats, magistrats et juristes" :
+        type1 = "Avocate / Magistrate / Juriste";
+        break;
+        case "les Morts pour la France" :
+        type1 = "Morte pour la France";
+        break;
+        case "les politiques" :
+        type1 = "Politique";
+        break;
+        case "les militaires" :
+        type1 = "Militaire";
+        break;
+        case "les victimes civiles de guerre" :
+        type1 = "Victimes civiles de guerre";
+        break;
+        case "les médecins et scientifiques" :
+        type1 = "Médecin / Scientifique";
+        break;
+        case "les écrivains et intellectuels" :
+        type1 = "Ecrivain / Intellectuelle";
+        break;
+        case "les religieux" :
+        type1 = "Religieuse";
+        break;
+        case "les journalistes" :
+        type1 = "Journaliste";
+        break;
+        case "les artisans et commerçants" :
+        type1 = 'Artisan / Commerçante';
+        break;
+        case "les victimes du terrorisme" :
+        type1 = 'Victimes du terrorisme';
+        break;
+        case "les éducateurs et pédagogues" :
+        type1 = 'Educatrice / Pédagogue';
+        break;
+        case "les chercheurs et conservateurs du patrimoine" :
+        type1 = 'Chercheuse / Conservatrice du patrimoine';
+        break;
+        case "les aviateurs" :
+        type1 = 'Aviatrice';
+        break;
+        case "les victimes d'accidents et catastrophes" :
+        type1 = "Victimes d'accidents et de catastrophes";
+        break;
+        case "les collectionneurs, mécènes et philantropes" :
+        type1 = 'Collectionneuse / Mécène / Philantrope';
+        break;
+        case "les industriels et entrepreneurs" :
+        type1 = 'Industrielle / Entrepreneure';
+        break;
+        case "les sportifs" :
+        type1 = 'Sportive';
+        break;
+        case "les créateurs et couturiers" :
+        type1 = 'Créatrice / Couturière';
+        break;
+        default : 
+        type1 = "Autre"; }
     
-    let blocGenre;
-    if (genre === "XX") {
-    blocGenre = "Femme";
-    } else if (genre === "YY") {
-    blocGenre = "Homme";
+    if (!type2) {
+      blocType.innerText = type1
     } else {
-    blocGenre = "Groupe / Autre";
-    }
+      switch (type2) {
+      case "les Résistants" :
+      type2 = "Résistante";
+      break;
+      case "lieux, édifices et vestiges" :
+      type2 = "Lieux et vestiges";
+      break;
+      case "événements et faits historiques" :
+      type2 = "Evénement";
+      break;
+      case "les artistes (beaux-arts)" :
+      type2 = "Artiste (Beaux-Arts)";
+      break;
+      case "les artistes (musique et danse)" :
+      type2 = "Artiste (musique et danse)";
+      break;
+      case "les artistes (théâtre et cinéma)" :
+      type2 = "Artiste (théâtre et cinéma)";
+      break;
+      case "les inventeurs et ingénieurs" :
+      type2 = "Inventeuse / Ingénieure";
+      break;
+      case "les éditeurs et les libraires" :
+      type2 = "Editrice / Libraire";
+      break;
+      case "les avocats, magistrats et juristes" :
+      type2 = "Avocate / Magistrate / Juriste";
+      break;
+      case "les Morts pour la France" :
+      type2 = "Morts pour la France";
+      break;
+      case "les politiques" :
+      type2 = "Politique";
+      break;
+      case "les militaires" :
+      type2 = "Militaire";
+      break;
+      case "les victimes civiles de guerre" :
+      type2 = "Victimes civiles de guerre";
+      break;
+      case "les médecins et scientifiques" :
+      type2 = "Médecin / Scientifique";
+      break;
+      case "les écrivains et intellectuels" :
+      type2 = "Ecrivain / Intellectuelle";
+      break;
+      case "les religieux" :
+      type2 = "Religieuse";
+      break;
+      case "les journalistes" :
+      type2 = "Journaliste";
+      break;
+      case "les artisans et commerçants" :
+      type2 = 'Artisan / Commerçante';
+      break; 
+      case "les victimes du terrorisme" :
+      type2 = 'Victimes du terrorisme';
+      break;
+      case "les éducateurs et pédagogues" :
+      type2 = 'Educatrice / Pédagogue';
+      break;
+      case "les chercheurs et conservateurs du patrimoine" :
+      type2 = 'Chercheuse / Conservatrice du patrimoine';
+      break;
+      case "les aviateurs" :
+      type2 = 'Aviatrice';
+      break;
+      case "les victimes d'accidents et catastrophes" :
+      type2 = "Victimes d'accidents et de catastrophes";
+      break;
+      case "les collectionneurs, mécènes et philantropes" :
+      type2 = 'Collectionneuse / Mécène / Philantrope';
+      break;
+      case "les industriels et entrepreneurs" :
+      type2 = 'Industrielle / Entrepreneure';
+      break;
+      case "les sportifs" :
+      type2 = 'Sportive';
+      break;
+      case "les créateurs et couturiers" :
+      type2 = 'Créatrice / Couturière';
+      break;
+      default :
+      type2 = "Autre"}
+      blocType.innerText = type1 + " / " + type2
+    } }
+    } 
     
     let blocSiecle
     if (siecle) {
@@ -471,8 +650,6 @@ for (let i = 0 ; i < data.length ; i++) {
     blocPlaque.style.display="none";
   }
   }
-}
-blocLoader.style.display = 'none';
 
 if (compteurBloc > limit_start) {
   blocAnswer.appendChild(buttonPlusPlaque);
