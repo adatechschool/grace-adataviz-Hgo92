@@ -191,7 +191,7 @@ for (let i = 0 ; i < data.length ; i++) {
     
     let blocType = document.createElement("div");
 
-    if (blocGenre === "Homme" && blocGenre === "Groupe / Autre") {
+    if (blocGenre === "Homme" || blocGenre === "Groupe / Autre") {
     blocType.classList.add("type");
       switch (type1) {
         case "les Résistants" :
@@ -283,7 +283,7 @@ for (let i = 0 ; i < data.length ; i++) {
     } else {
       switch (type2) {
       case "les Résistants" :
-      type2 = "Résistant(e)";
+      type2 = "Résistant";
       break;
       case "lieux, édifices et vestiges" :
       type2 = "Lieux et vestiges";
