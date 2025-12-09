@@ -542,8 +542,7 @@ for (let i = 0 ; i < data.length ; i++) {
       default :
       type2 = "Autre"}
       blocType.innerText = type1 + " / " + type2
-    } }
-    } 
+    } }  
     
     let blocSiecle
     if (siecle) {
@@ -675,7 +674,7 @@ if (compteurBloc > limit_start) {
 }
 
 blocLoader.style.display = "none";
-}) 
+}}) 
 
 buttonReset.addEventListener("click", () => {
   nameSearch.value = "";
