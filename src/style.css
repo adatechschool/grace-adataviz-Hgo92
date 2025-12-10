@@ -139,7 +139,7 @@ h2 {
 
 /* Matériaux différents */
 .bloc-plaque.pierre {
-  background: linear-gradient(145deg, #d4cfc4, #b5afa4);
+  background: linear-gradient(145deg, #c7cbd2, #c9cece);
   box-shadow: 
       0 10px 30px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.2),
@@ -147,7 +147,7 @@ h2 {
 }
 
 .bloc-plaque.pierre-blanche {
-  background: linear-gradient(145deg, #f5f0e8, #e8e0d5);
+  background: linear-gradient(145deg, #FBF6F0, #FDFBF9);
   box-shadow: 
       0 10px 30px rgba(0, 0, 0, 0.25),
       inset 0 1px 0 rgba(255, 255, 255, 0.4),
@@ -180,7 +180,7 @@ h2 {
 }
 
 .bloc-plaque.marbre {
-  background: linear-gradient(145deg, #e8d5c4, #c9b8a8);
+  background: linear-gradient(145deg, #e3e0cd, #eae0c8);
   box-shadow: 
     0 10px 30px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
@@ -188,7 +188,7 @@ h2 {
 }
 
 .bloc-plaque.granit {
-  background: linear-gradient(145deg, #6b6b6b, #4a4a4a);
+  background: linear-gradient(145deg, #82878f, #4a4a4a);
   box-shadow: 
     0 10px 30px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.15),
