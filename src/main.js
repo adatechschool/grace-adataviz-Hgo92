@@ -4,7 +4,7 @@ function requeteAPI(nameInput, valueType, valueGenre, valuePeriod, valueDistrict
 let whereConditions = []; // Je crée un tableau qui me permet d'ajouter mes filtres dans l'URL
 
 if (nameInput && nameInput.trim() !== "") {
-  const encodedName = encodeURIComponent(nameInput.toLowerCase()); // encoreURIComponent transforme la requête au format URL
+  const encodedName = encodeURIComponent(nameInput.toLowerCase()); // encodeURIComponent transforme la requête au format URL
   whereConditions.push(`search(titre, "${encodedName}")`);
 }
 
@@ -38,17 +38,18 @@ const limit = 100;
 const whereSearch = requeteAPI(nameInput, valueType, valueGenre, valuePeriod, valueDistrict); // Je mets mes critères au bon format dans une variable
 const urlAPI = `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/plaques_commemoratives/records`;
 
-const firstResponse = await fetch(
+const premierFetch = await fetch(
   `${urlAPI}?limit=${limit}&offset=0${whereSearch}`
 ); // Voilà mon fetch filtré
 
-const firstData = await firstResponse.json();
-const totalCount = firstData.total_count;
+const fetchData = await premierFetch.json();
+const totalCount = fetchData.total_count;
 
 if (totalCount <= limit) {
-  return firstData.results;
+  return fetchData.results;
 }
 
+// Je calcule le nombre de boucle que je vais devoir faire pour fetch toutes mes données, je mets chaque fetch dans un tableau
 const numRequetes = Math.ceil(totalCount / limit);
 const promises = [];
 
@@ -61,9 +62,7 @@ for (let i = 0; i < numRequetes; i++) {
 }
 
 const responses = await Promise.all(promises); // Promise.all = promesse qui contient d'autres promesses (celles dans le tableau promises) et les attend avant d'être réalisée
-const dataAPI = responses.flatMap(data => data.results); // .map me rend plusieurs tableaux, .flatMap ne m'en rend qu'un
-
-console.log(`${dataAPI.length} résultats trouvés sur ${totalCount} total`);
+const dataAPI = responses.flatMap(data => data.results); // .map me rend plusieurs tableaux (avec 100 plaques à chaque fois), .flatMap ne m'en rend qu'un
 return dataAPI;
 }
 
@@ -165,7 +164,6 @@ for (let i = 0 ; i < data.length ; i++) {
     boutonMoins.classList.add("bouton-moins");
     
     let blocTitre = document.createElement('div');
-    
     if (titre) {
     blocTitre.innerText = titre;
     if (titre.length > 35) {
