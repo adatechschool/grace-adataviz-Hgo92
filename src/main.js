@@ -1,37 +1,105 @@
 import './style.css'
 
-async function fetchAPI() {
-  const limit = 100;
+function requeteAPI(nameInput, valueType, valueGenre, valuePeriod, valueDistrict) {
+let whereConditions = []; // Je crée un tableau qui me permet d'ajouter mes filtres dans l'URL
 
-  const firstResponse = await fetch(
-    `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/plaques_commemoratives/records?limit=${limit}&offset=0`
-  );
-
-  const firstData = await firstResponse.json();
-  const totalCount = firstData.total_count;
-
-  const numRequests = Math.ceil(totalCount / limit);
-
-  const promises = [];
-  for (let i = 0; i < numRequests; i++) {
-    const offset = i * limit;
-    promises.push(
-      fetch(`https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/plaques_commemoratives/records?limit=${limit}&offset=${offset}`).then(res => res.json())
-    );
-  }
-
-  const responses = await Promise.all(promises);
-  const dataAPI = responses.flatMap(data => data.results)
-
-  console.log(dataAPI);
-  return dataAPI;
+if (nameInput && nameInput.trim() !== "") {
+  const encodedName = encodeURIComponent(nameInput.toLowerCase()); // encoreURIComponent transforme la requête au format URL
+  whereConditions.push(`search(titre, "${encodedName}")`);
 }
 
-let data = await fetchAPI();
+if (valueType !== 'all') {
+  const encodedType = encodeURIComponent(valueType);
+  whereConditions.push(`objet_1="${encodedType}"`);
+}
+
+if (valueGenre !== 'all') {
+  whereConditions.push(`genre="${valueGenre}"`);
+}
+
+if (valuePeriod !== 'all') {
+  whereConditions.push(`siecle="${valuePeriod}"`);
+}
+
+if (valueDistrict !== 'all') {
+  whereConditions.push(`ardt=${valueDistrict}`);
+}
+
+if (whereConditions.length > 0) {
+  return `&where=${whereConditions.join(' AND ')}`;
+}
+
+return '';
+}
+
+async function donneesFiltrees(nameInput, valueType, valueGenre, valuePeriod, valueDistrict) {
+const limit = 100;
+
+const whereSearch = requeteAPI(nameInput, valueType, valueGenre, valuePeriod, valueDistrict); // Je mets mes critères au bon format dans une variable
+const urlAPI = `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/plaques_commemoratives/records`;
+
+const firstResponse = await fetch(
+  `${urlAPI}?limit=${limit}&offset=0${whereSearch}`
+); // Voilà mon fetch filtré
+
+const firstData = await firstResponse.json();
+const totalCount = firstData.total_count;
+
+if (totalCount <= limit) {
+  return firstData.results;
+}
+
+const numRequetes = Math.ceil(totalCount / limit);
+const promises = [];
+
+for (let i = 0; i < numRequetes; i++) {
+  const offset = i * limit;
+  promises.push(
+    fetch(`${urlAPI}?limit=${limit}&offset=${offset}${whereSearch}`)
+      .then(res => res.json())
+  );
+}
+
+const responses = await Promise.all(promises); // Promise.all = promesse qui contient d'autres promesses (celles dans le tableau promises) et les attend avant d'être réalisée
+const dataAPI = responses.flatMap(data => data.results); // .map me rend plusieurs tableaux, .flatMap ne m'en rend qu'un
+
+console.log(`${dataAPI.length} résultats trouvés sur ${totalCount} total`);
+return dataAPI;
+}
+
+// Mon ancien fetch si jamais l'autre ne marche pas 
+
+// async function fetchAPI() {
+// const limit = 100;
+
+// const firstResponse = await fetch(
+//   `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/plaques_commemoratives/records?limit=${limit}&offset=0`
+// );
+
+// const firstData = await firstResponse.json();
+// const totalCount = firstData.total_count;
+
+// const numRequests = Math.ceil(totalCount / limit);
+
+// const promises = [];
+// for (let i = 0; i < numRequests; i++) {
+//   const offset = i * limit;
+//   promises.push(
+//     fetch(`https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/plaques_commemoratives/records?limit=${limit}&offset=${offset}`).then(res => res.json())
+//   );
+// }
+
+// const responses = await Promise.all(promises);
+// const dataAPI = responses.flatMap(data => data.results)
+
+// console.log(dataAPI);
+// return dataAPI;
+// }
+
+// let data = await fetchAPI();
 
 // Je lie dans JavaScript tous les éléments de mon bloc de recherche
 
-let boxSearch = document.getElementById("search-box");
 let nameSearch = document.getElementById("search-input");
 let typeSearch = document.getElementById("select-type");
 let genreSearch = document.getElementById("select-genre");
@@ -42,7 +110,7 @@ let buttonReset = document.getElementById('search-button-reset');
 
 // Je crée des fonctions pour chaque type de recherche
 
-function searchName(index, name) {
+function searchName(index, name, data) {
   name = name.toLowerCase() 
   let titre = data[index].titre
   if (titre) {
@@ -50,13 +118,14 @@ function searchName(index, name) {
   if (name === "" || titre.includes(name)) { 
     return true
   } else { 
-    return false} 
+    return false
+  } 
   } else {
     return false
   }
 }
 
-function searchType(index, type) {
+function searchType(index, type, data) {
    if (type === 'all') {
     return true
   } else if (data[index].objet_1) {
@@ -70,7 +139,7 @@ function searchType(index, type) {
   }
   }
 
-function searchGenre(index, genre) {
+function searchGenre(index, genre, data) {
    if (genre === 'all') {
     return true
   } else if (data[index].genre === genre) {
@@ -80,7 +149,7 @@ function searchGenre(index, genre) {
   } else {return false};
 } 
 
-function searchPeriod(index, period) {
+function searchPeriod(index, period, data) {
   if (period === 'all') { 
     return true;
   } else if (data[index].siecle) {
@@ -95,7 +164,7 @@ function searchPeriod(index, period) {
   }
 }
 
-function searchDistrict(index, district) {
+function searchDistrict(index, district, data) {
   if (district === 'all') { 
     return true
   } else if (data[index].ardt == district) {
@@ -103,9 +172,7 @@ function searchDistrict(index, district) {
   } else {return false}
 }
 
-// Je crée un premier AEL pour trouver UN des critères 
-
-buttonSearch.addEventListener('click', ()=> {
+buttonSearch.addEventListener('click', async ()=> {
   let compteurBloc = 0;
   let compteurAffichage = 0;
   const limit_start = 20;
@@ -116,7 +183,6 @@ buttonSearch.addEventListener('click', ()=> {
   buttonPlusPlaque.classList.add("bouton-plus-plaque");
 
 // Je récupère les valeurs des champs de recherche 
-
   const nameInput = nameSearch.value;
   const valueType = typeSearch.options[typeSearch.selectedIndex].value;
   const valueGenre = genreSearch.options[genreSearch.selectedIndex].value;
@@ -134,7 +200,15 @@ buttonSearch.addEventListener('click', ()=> {
 
   let totalPlaques = [];
 
-// Je crée ma boucle de recherche
+try { 
+  const data = await donneesFiltrees(
+  nameInput, 
+  valueType, 
+  valueGenre, 
+  valuePeriod, 
+  valueDistrict
+);
+
 for (let i = 0 ; i < data.length ; i++) { 
   let titre = data[i].titre;
   let genre = data[i].genre;
@@ -144,14 +218,10 @@ for (let i = 0 ; i < data.length ; i++) {
   let ardt = data[i].ardt;
   let adresse = data[i].adresse;
   let materiau = data[i].materiau;
-  let pays = data[i].pays;
+  let pays = data[i].pays || "France";
   let text = data[i].retranscription;
 
-  if (!data[i].pays) {
-    pays = "France";
-  }
-
-  if (searchName(i,nameInput) && searchType(i, valueType) && searchGenre(i,valueGenre) && searchPeriod(i, valuePeriod) && searchDistrict(i, valueDistrict)) {
+  if (searchPeriod(i, valuePeriod, data)) {
     compteurBloc ++;
 
     let blocPlaque = document.createElement('div');
@@ -177,7 +247,7 @@ for (let i = 0 ; i < data.length ; i++) {
     if (titre) {
     blocTitre.innerText = titre;
     } else {
-      blocTitre.innerText = "Ici";
+      blocTitre.innerText = "Plaque commémorative";
     }
 
     let blocGenre;
@@ -635,13 +705,13 @@ for (let i = 0 ; i < data.length ; i++) {
   boutonPlus.addEventListener("click", () => {
     blocPasPrio.style.display = "block";
     boutonPlus.style.display = "none";
-  })
+  });
 
   boutonMoins.innerText = "Voir moins";
   boutonMoins.addEventListener("click", () => {
     blocPasPrio.style.display = "none";
     boutonPlus.style.display = "block";
-  })
+  });
 
   totalPlaques.push(blocPlaque);
 
@@ -649,6 +719,7 @@ for (let i = 0 ; i < data.length ; i++) {
     blocPlaque.style.display="none";
   }
   }
+}
 
 if (compteurBloc > limit_start) {
   blocAnswer.appendChild(buttonPlusPlaque);
@@ -673,8 +744,17 @@ if (compteurBloc > limit_start) {
   });
 }
 
-blocLoader.style.display = "none";
-}}) 
+  blocLoader.style.display = "none";
+
+  if (compteurBloc === 0) {
+    blocAnswer.innerHTML = "<p style='text-align:center; width:100%; margin:20px; font-size:1.2rem;'>Aucune plaque trouvée avec ces critères.</p>";
+  }
+
+  } catch (error) {
+    console.error("Erreur lors de la recherche:", error);
+    blocAnswer.innerHTML = "<p style='text-align:center; color:red; width:100%; margin:20px;'>Erreur lors du chargement des données. Veuillez réessayer.</p>";
+  }
+}) 
 
 buttonReset.addEventListener("click", () => {
   nameSearch.value = "";
@@ -682,6 +762,8 @@ buttonReset.addEventListener("click", () => {
   genreSearch.selectedIndex = 0;
   periodSearch.selectedIndex = 0;
   districtSearch.selectedIndex = 0;
+
+  document.getElementById('answer-block').innerHTML = "";
 })
 
 
