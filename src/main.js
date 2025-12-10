@@ -10,7 +10,7 @@ if (nameInput && nameInput.trim() !== "") {
 
 if (valueType !== 'all') {
   const encodedType = encodeURIComponent(valueType);
-  whereConditions.push(`objet_1="${encodedType}"`);
+  whereConditions.push(`(objet_1 like "%${encodedType}%" OR objet_2 like "%${encodedType}%")`);
 }
 
 if (valueGenre !== 'all') {
