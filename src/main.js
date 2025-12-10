@@ -67,37 +67,6 @@ console.log(`${dataAPI.length} résultats trouvés sur ${totalCount} total`);
 return dataAPI;
 }
 
-// Mon ancien fetch si jamais l'autre ne marche pas 
-
-// async function fetchAPI() {
-// const limit = 100;
-
-// const firstResponse = await fetch(
-//   `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/plaques_commemoratives/records?limit=${limit}&offset=0`
-// );
-
-// const firstData = await firstResponse.json();
-// const totalCount = firstData.total_count;
-
-// const numRequests = Math.ceil(totalCount / limit);
-
-// const promises = [];
-// for (let i = 0; i < numRequests; i++) {
-//   const offset = i * limit;
-//   promises.push(
-//     fetch(`https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/plaques_commemoratives/records?limit=${limit}&offset=${offset}`).then(res => res.json())
-//   );
-// }
-
-// const responses = await Promise.all(promises);
-// const dataAPI = responses.flatMap(data => data.results)
-
-// console.log(dataAPI);
-// return dataAPI;
-// }
-
-// let data = await fetchAPI();
-
 // Je lie dans JavaScript tous les éléments de mon bloc de recherche
 
 let nameSearch = document.getElementById("search-input");
@@ -109,45 +78,6 @@ let buttonSearch = document.getElementById("search-button");
 let buttonReset = document.getElementById('search-button-reset');
 
 // Je crée des fonctions pour chaque type de recherche
-
-function searchName(index, name, data) {
-  name = name.toLowerCase() 
-  let titre = data[index].titre
-  if (titre) {
-  titre = titre.toLowerCase()
-  if (name === "" || titre.includes(name)) { 
-    return true
-  } else { 
-    return false
-  } 
-  } else {
-    return false
-  }
-}
-
-function searchType(index, type, data) {
-   if (type === 'all') {
-    return true
-  } else if (data[index].objet_1) {
-      if (data[index].objet_1 === type || data[index].objet_1.includes(type)) {
-      return true
-    } else {
-      return false
-    }; 
-  } else {
-    return false
-  }
-  }
-
-function searchGenre(index, genre, data) {
-   if (genre === 'all') {
-    return true
-  } else if (data[index].genre === genre) {
-    return true; 
-  } else if (!data[index].genre && genre === "autre") {
-    return true
-  } else {return false};
-} 
 
 function searchPeriod(index, period, data) {
   if (period === 'all') { 
@@ -162,14 +92,6 @@ function searchPeriod(index, period, data) {
   } else {
     return false;
   }
-}
-
-function searchDistrict(index, district, data) {
-  if (district === 'all') { 
-    return true
-  } else if (data[index].ardt == district) {
-    return true
-  } else {return false}
 }
 
 buttonSearch.addEventListener('click', async ()=> {
@@ -243,8 +165,6 @@ for (let i = 0 ; i < data.length ; i++) {
     boutonMoins.classList.add("bouton-moins");
     
     let blocTitre = document.createElement('div');
-
-
     
     if (titre) {
     blocTitre.innerText = titre;
