@@ -165,10 +165,10 @@ h2 {
 .address {
   font-style: italic;
   margin-bottom: 10px;
+  font-size: 0.95em;
 }
 
 .metadata {
-  font-size: 0.85em;
   display: flex;
   gap: 15px;
   justify-content: center;
@@ -177,6 +177,7 @@ h2 {
 
 .metadata span {
   opacity: 0.8;
+  font-size: 0.90em;
 }
 
 .name {

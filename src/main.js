@@ -175,8 +175,8 @@ function searchDistrict(index, district, data) {
 buttonSearch.addEventListener('click', async ()=> {
   let compteurBloc = 0;
   let compteurAffichage = 0;
-  const limit_start = 20;
-  const limit_increment = 20;
+  const limit_start = 21;
+  const limit_increment = 21;
 
   let buttonPlusPlaque = document.createElement("button");
   buttonPlusPlaque.style.display = "none";
