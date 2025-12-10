@@ -18,8 +18,15 @@
   src: url(fonts/Didot\ Title.otf);
 }
 
+
+@font-face {
+  font-family: Atkinson; 
+  src: url(fonts/Atkinson\ Hyperlegible\ Next/AtkinsonHyperlegibleNext-Regular.otf);
+}
+
+
 * {
-  font-size : 16px;
+  font-size : 14px;
   font-family: "DidotFont";
   margin: 0;
   padding: 0;
@@ -30,14 +37,14 @@ body {
 
 h1 {
   font-family : "DidotBold";
-  font-size : 3rem;
+  font-size : 3.5rem;
   text-align : center;
   margin : 20px;
 }
 
 #subtitle-block {
   text-align : center;
-  font-size : 1.5rem;
+  font-size : 2rem;
   padding : 10px 25px;
   margin : 0 auto;
 }
@@ -60,30 +67,36 @@ h1 {
 
 h2 {
   margin-left : 5px;
+  font-size : 1.15rem;
 }
 
 #search-input {
   width: 150px;
   height: 20px;
   padding : 5px;
+  font-size : 1.15rem;
 }
 
 .label-class {
   margin-right: 5px;
+  font-size : 1.15rem;
 }
 
 .select-class {
   padding: 0 0 0 5px;
+  font-size : 1.15rem;
 }
 
 #search-button-block {
   margin-right: 15px;
   gap: 5px;
   display:flex;
+  font-size : 1.15rem;
 }
 
 #search-button-block button {
   padding : 0 15px;
+  font-size : 1.15rem;
 }
 
 #answer-block {
@@ -96,9 +109,9 @@ h2 {
 
 .bloc-plaque {
   position: relative;
-  padding: 35px 30px;
+  padding: 20px 15px;
   border-radius: 8px;
-  width: 600px;
+  width: 435px;
   text-align: center;
 }
 
@@ -135,6 +148,72 @@ h2 {
   gap : 10px;
   margin : 10px 20px;
   font-size: 0.75rem;
+}
+
+.bloc-content {
+  color: #3a3028;
+  letter-spacing: 0.05em;
+}
+
+.bloc-header {
+  font-size: 0.9em;
+  color: #5a4a3a;
+  margin-bottom: 15px;
+  font-weight: 300;
+}
+
+.address {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.metadata {
+  font-size: 0.85em;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.metadata span {
+  opacity: 0.8;
+}
+
+.name {
+  font-size: 2em;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.name-long {
+  font-size: 1.25em;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.type {
+  font-size: 1.4em;
+  margin: 0 0 10px 0;
+  font-weight: 300;
+  }
+
+.description {
+font-size: 1.15em;
+line-height: 1.6;
+margin: 0;
+font-weight: 400;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+}
+
+.title-work {
+font-style: italic;
+font-weight: 500;
+margin: 15px 0 0 0;
 }
 
 /* Matériaux différents */
@@ -273,63 +352,7 @@ h2 {
   right: 20px;
 }
 
-.bloc-content {
-  color: #3a3028;
-  letter-spacing: 0.05em;
-}
 
-.bloc-header {
-  font-size: 0.9em;
-  color: #5a4a3a;
-  margin-bottom: 20px;
-  font-weight: 300;
-}
-
-.address {
-  font-style: italic;
-  margin-bottom: 10px;
-}
-
-.metadata {
-  font-size: 0.85em;
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.metadata span {
-  opacity: 0.8;
-}
-
-.name {
-  font-size: 2.2em;
-  font-weight: 400;
-  margin: 0 0 15px 0;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-}
-
-.type {
-  font-size: 1.4em;
-  margin: 0 0 25px 0;
-  font-weight: 300;
-  }
-
-.description {
-font-size: 1.1em;
-line-height: 1.6;
-margin: 0;
-font-weight: 400;
-text-transform: uppercase;
-letter-spacing: 0.08em;
-}
-
-.title-work {
-font-style: italic;
-font-weight: 500;
-margin: 15px 0 0 0;
-}
 
 @media (max-width: 800px) {
 

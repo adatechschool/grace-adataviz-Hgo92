@@ -243,11 +243,18 @@ for (let i = 0 ; i < data.length ; i++) {
     boutonMoins.classList.add("bouton-moins");
     
     let blocTitre = document.createElement('div');
-    blocTitre.classList.add("name")
+
+
+    
     if (titre) {
     blocTitre.innerText = titre;
+    if (titre.length > 35) {
+      blocTitre.classList.add("name-long")
     } else {
+      blocTitre.classList.add("name")
+    } } else {
       blocTitre.innerText = "Plaque commémorative";
+      blocTitre.classList.add("name")
     }
 
     let blocGenre;
