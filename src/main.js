@@ -773,4 +773,13 @@ buttonReset.addEventListener("click", () => {
   document.getElementById('answer-block').innerHTML = "";
 })
 
+const buttonFont = document.getElementById("button-font");
+buttonFont.addEventListener("click", () => {
+  if (document.body.style.fontFamily === "DidotFont") {
+    document.body.style.fontFamily = "Atkinson";
+  } else {
+    document.body.style.fontFamily = "DidotFont";
+  };
+});
+
 
