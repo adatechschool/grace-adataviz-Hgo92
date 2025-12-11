@@ -258,7 +258,7 @@ for (let i = 0 ; i < data.length ; i++) {
         case "les victimes d'accidents et catastrophes" :
         type1 = "Victimes d'accidents et de catastrophes";
         break;
-        case "les collectionneurs, mécènes et philantropes" :
+        case "les collectionneurs, mécènes et philanthropes" :
         type1 = 'Collectionneur / Mécène / Philantrope';
         break;
         case "les industriels et entrepreneurs" :
@@ -346,7 +346,7 @@ for (let i = 0 ; i < data.length ; i++) {
       case "les victimes d'accidents et catastrophes" :
       type2 = "Victimes d'accidents et de catastrophes";
       break;
-      case "les collectionneurs, mécènes et philantropes" :
+      case "les collectionneurs, mécènes et philanthropes" :
       type2 = 'Collectionneur / Mécène / Philantrope';
       break;
       case "les industriels et entrepreneurs" :
@@ -434,7 +434,7 @@ for (let i = 0 ; i < data.length ; i++) {
         case "les victimes d'accidents et catastrophes" :
         type1 = "Victimes d'accidents et de catastrophes";
         break;
-        case "les collectionneurs, mécènes et philantropes" :
+        case "les collectionneurs, mécènes et philanthropes" :
         type1 = 'Collectionneuse / Mécène / Philantrope';
         break;
         case "les industriels et entrepreneurs" :
@@ -522,7 +522,7 @@ for (let i = 0 ; i < data.length ; i++) {
       case "les victimes d'accidents et catastrophes" :
       type2 = "Victimes d'accidents et de catastrophes";
       break;
-      case "les collectionneurs, mécènes et philantropes" :
+      case "les collectionneurs, mécènes et philanthropes" :
       type2 = 'Collectionneuse / Mécène / Philantrope';
       break;
       case "les industriels et entrepreneurs" :
